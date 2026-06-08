@@ -115,6 +115,6 @@ with col2:
 
 # SECTION 4: Raw Data
 st.markdown('<div class="section-title">📋 Complete Data</div>', unsafe_allow_html=True)
-tahun_filter = st.selectbox("Filter by Year:", ['all'] + sorted(df_final['Tahun'].unique().tolist()))
-df_show = df_final if tahun_filter == 'Semua' else df_final[df_final['Tahun'] == tahun_filter]
+tahun_filter = st.selectbox("Filter by Year:", ['All'] + sorted(df_final['Tahun'].unique().tolist()))
+df_show = df_final if tahun_filter == 'All' else df_final[df_final['Tahun'] == tahun_filter]
 st.dataframe(df_show.reset_index(drop=True), use_container_width=True, height=300)
