@@ -43,8 +43,8 @@ with col1:
     try:
         fig, ax = plt.subplots(figsize=(10, 7))
         gdf_spatial.plot(column='community', cmap='tab20', ax=ax,
-                        edgecolor='white', linewidth=0.5, legend=True)
-        ax.set_title('Community Detection Map - Louvain Algorithm', color='white', fontsize=11, fontweight='bold')
+                        edgecolor='black', linewidth=0.5, legend=True)
+        ax.set_title('Community Detection Map - Louvain Algorithm', color='black', fontsize=11, fontweight='bold')
         ax.axis('off')
         plt.tight_layout(); st.pyplot(fig)
     except Exception as e:
