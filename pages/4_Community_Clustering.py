@@ -42,8 +42,6 @@ with col1:
     # Peta community
     try:
         fig, ax = plt.subplots(figsize=(10, 7))
-        n_comm = gdf_spatial['community'].nunique()
-        cmap = plt.cm.get_cmap('tab20', n_comm)
         gdf_spatial.plot(column='community', cmap='tab20', ax=ax,
                         edgecolor='white', linewidth=0.5, legend=True)
         ax.set_title('Community Detection Map - Louvain Algorithm', color='white', fontsize=11, fontweight='bold')
