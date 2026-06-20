@@ -22,15 +22,6 @@ st.markdown("""
     color: #e2e8f0 !important;
 }
 
-[data-testid="stAppViewContainer"] {
-    background: linear-gradient(
-        180deg,
-        #f8fafc 0%,
-        #eef4ff 100%
-    );border-right: 1px solid #1a3a5c;
-}
-[data-testid="stSidebar"] * { color: #c8dff0 !important; }
-
 .main-title {
     font-size: 3.5rem;
     font-weight: 800;
