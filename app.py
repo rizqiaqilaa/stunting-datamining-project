@@ -65,14 +65,12 @@ try:
     df_final = data['df_final']
     df_prov  = data['df_prov']
 
-    st.write(df_final.columns.tolist())
-
     selected_year = st.sidebar.selectbox(
     "Select Year",
-    sorted(df_final["Year"].unique()))
+    sorted(df_final["Tahun"].unique()))
 
     df_year = df_final[
-        df_final["Year"] == selected_year
+        df_final["Tahun"] == selected_year
     ]
 
     col1, col2, col3, col4 = st.columns(4)
@@ -104,13 +102,13 @@ try:
 
     with colA:
         trend = (
-            df_final.groupby("Year")["Stunting"]
+            df_final.groupby("Tahun")["Stunting"]
             .mean()
             .reset_index()
         )
         fig = px.line(
             trend,
-            x="Year",
+            x="Tahun",
             y="Stunting",
             markers=True,
             title="Average Stunting Trend"
