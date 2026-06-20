@@ -13,9 +13,6 @@ st.markdown("""
 
 * { font-family: 'Sora', sans-serif; }
 
-[data-testid="stAppViewContainer"] {
-    background: linear-gradient(135deg, #0a1628 0%, #0d2137 50%, #0a1628 100%);
-}
 [data-testid="stSidebar"] {
     background: #061020 !important;
     border-right: 1px solid #1a3a5c;

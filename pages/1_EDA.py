@@ -61,13 +61,13 @@ fig, ax = plt.subplots(figsize=(8, 6))
 mask = np.zeros_like(correlation, dtype=bool)
 mask[np.triu_indices_from(mask, k=1)] = True
 sns.heatmap(
-    correlation, annot=True, fmt='.2f', cmap='RdYlGn',
+    correlation, annot=True, fmt='.2f', cmap='coolwarm',
     center=0, ax=ax, linewidths=0.5, linecolor='#1a3a5c',
-    annot_kws={'size': 9, 'color': 'white'},
+    annot_kws={'size': 9, 'color': 'black'},
     cbar_kws={'shrink': 0.8}
 )
-ax.set_title('Correlation Matrix - Stunting and Socioeconomic Factors', color='white', fontsize=12, fontweight='bold')
-ax.tick_params(colors='white', labelsize=9)
+ax.set_title('Correlation Matrix - Stunting and Socioeconomic Factors', color='black', fontsize=12, fontweight='bold')
+ax.tick_params(colors='black', labelsize=9)
 plt.tight_layout()
 st.pyplot(fig)
 
