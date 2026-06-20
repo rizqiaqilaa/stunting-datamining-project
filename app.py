@@ -13,21 +13,27 @@ st.markdown("""
 
 * { font-family: 'Sora', sans-serif; }
 
-[data-testid="stSidebar"] {
-    background: #061020 !important;
-    border-right: 1px solid #1a3a5c;
+[data-testid="stAppViewContainer"] {
+    background: linear-gradient(
+        180deg,
+        #f8fafc 0%,
+        #eef4ff 100%
+    );border-right: 1px solid #1a3a5c;
 }
 [data-testid="stSidebar"] * { color: #c8dff0 !important; }
 
 .main-title {
-    font-size: 2.8rem; font-weight: 800;
-    background: linear-gradient(135deg, #38ef7d, #11998e, #38a1ff);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    letter-spacing: -1px; margin-bottom: 0;
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 0;
+    letter-spacing: -2px;
 }
 .main-sub {
-    color: #5a8fa8; font-size: 0.95rem;
+    color: #64748b;
+    font-size: 1rem;
     font-family: 'JetBrains Mono', monospace;
+    margin-top: -8px;
     margin-bottom: 2rem;
 }
 .metric-card {
@@ -52,9 +58,14 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-st.markdown('<p class="main-title">StuntGraph</p>', unsafe_allow_html=True)
-st.markdown('<p class="main-sub">Graph-Based Spatio-Temporal Analysis of Stunting in Indonesia</p>', unsafe_allow_html=True)
-
+st.markdown("""
+<div class="main-title">
+🗺️ StuntGraph
+</div>
+<div class="main-sub">
+Graph-Based Spatio-Temporal Analysis of Stunting in Indonesia
+</div>
+""", unsafe_allow_html=True)
 
 # Quick stats
 import pickle, os
@@ -89,7 +100,7 @@ try:
         avg = df_year['Stunting'].mean()
         st.markdown(f"""<div class="metric-card">
             <div class="metric-val">{avg:.1f}%</div>
-            <div class="metric-lbl">Stunting Avarage</div>
+            <div class="metric-lbl">Average Stunting</div>
         </div>""", unsafe_allow_html=True)
     with col4:
         high = (df_prov['Risiko'] == 'High Risk').sum()
