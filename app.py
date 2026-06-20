@@ -32,8 +32,15 @@ st.markdown("""
 }
 .metric-card {
     background: linear-gradient(135deg, #0d2137, #112840);
-    border: 1px solid #1a3a5c; border-radius: 16px;
-    padding: 1.2rem 1.5rem; text-align: center;
+    border: 1px solid #1a3a5c;
+    border-radius: 16px;
+    padding: 1.2rem 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+.metric-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(56,239,125,0.15);
 }
 .metric-val { font-size: 2rem; font-weight: 800; color: #38ef7d; }
 .metric-lbl { font-size: 0.75rem; color: #5a8fa8; letter-spacing: 1px; text-transform: uppercase; }
@@ -58,6 +65,14 @@ try:
     df_final = data['df_final']
     df_prov  = data['df_prov']
 
+    selected_year = st.sidebar.selectbox(
+    "Select Year",
+    sorted(df_final["Year"].unique()))
+
+    df_year = df_final[
+        df_final["Year"] == selected_year
+    ]
+
     col1, col2, col3, col4 = st.columns(4)
     with col1:
         st.markdown(f"""<div class="metric-card">
@@ -70,7 +85,7 @@ try:
             <div class="metric-lbl">Observasi</div>
         </div>""", unsafe_allow_html=True)
     with col3:
-        avg = df_final['Stunting'].mean()
+        avg = df_year['Stunting'].mean()
         st.markdown(f"""<div class="metric-card">
             <div class="metric-val">{avg:.1f}%</div>
             <div class="metric-lbl">Rata-rata Stunting</div>
@@ -81,6 +96,45 @@ try:
             <div class="metric-val" style="color:#ef4444;">{high}</div>
             <div class="metric-lbl">Provinsi High Risk</div>
         </div>""", unsafe_allow_html=True)
+
+    import plotly.express as px
+    colA, colB = st.columns(2)
+
+    with colA:
+        trend = (
+            df_final.groupby("Year")["Stunting"]
+            .mean()
+            .reset_index()
+        )
+        fig = px.line(
+            trend,
+            x="Year",
+            y="Stunting",
+            markers=True,
+            title="Average Stunting Trend"
+        )
+        st.plotly_chart(fig, use_container_width=True)
+
+    with colB:
+        risk_count = (
+            df_prov["Risiko"]
+            .value_counts()
+            .reset_index()
+        )
+        risk_count.columns = ["Risk", "Count"]
+        fig2 = px.pie(
+            risk_count,
+            names="Risk",
+            values="Count",
+            title="Risk Distribution"
+        )
+        st.plotly_chart(fig2, use_container_width=True)
+
+        st.markdown("## 🔍 Key Insights")
+        st.info(f"""
+            Average stunting prevalence in {selected_year}
+            is {avg:.2f}% across 34 provinces.
+            """)
 
     st.markdown("---")
     st.markdown("### 📋 About")

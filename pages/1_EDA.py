@@ -91,22 +91,22 @@ with col1:
     top10 = stunting_avg.nlargest(10, 'Stunting_avg')
     fig, ax = plt.subplots(figsize=(6, 5))
     bars = ax.barh(top10['Provinsi'], top10['Stunting_avg'], color='#ef4444', edgecolor='none')
-    ax.set_title('Top 10 Highest Stunting Rates', color='white', fontsize=11, fontweight='bold')
-    ax.tick_params(colors='white', labelsize=8); ax.spines[:].set_color('#1a3a5c')
+    ax.set_title('Top 10 Highest Stunting Rates', color='black', fontsize=11, fontweight='bold')
+    ax.tick_params(colors='black', labelsize=8); ax.spines[:].set_color('#1a3a5c')
     ax.set_xlabel('Avg Stunting (%)', color='black')
     for bar, val in zip(bars, top10['Stunting_avg']):
-        ax.text(val + 0.2, bar.get_y() + bar.get_height()/2, f'{val:.1f}%', va='center', color='white', fontsize=8)
+        ax.text(val + 0.2, bar.get_y() + bar.get_height()/2, f'{val:.1f}%', va='center', color='black', fontsize=8)
     plt.tight_layout(); st.pyplot(fig)
 
 with col2:
     bot10 = stunting_avg.nsmallest(10, 'Stunting_avg')
     fig, ax = plt.subplots(figsize=(6, 5))
     bars = ax.barh(bot10['Provinsi'], bot10['Stunting_avg'], color='#38ef7d', edgecolor='none')
-    ax.set_title('Top 10 Lowest Rates of Stunting', color='white', fontsize=11, fontweight='bold')
+    ax.set_title('Top 10 Lowest Rates of Stunting', color='black', fontsize=11, fontweight='bold')
     ax.tick_params(colors='black', labelsize=8); ax.spines[:].set_color('#1a3a5c')
     ax.set_xlabel('Avg Stunting (%)', color='black')
     for bar, val in zip(bars, bot10['Stunting_avg']):
-        ax.text(val + 0.1, bar.get_y() + bar.get_height()/2, f'{val:.1f}%', va='center', color='white', fontsize=8)
+        ax.text(val + 0.1, bar.get_y() + bar.get_height()/2, f'{val:.1f}%', va='center', color='black', fontsize=8)
     plt.tight_layout(); st.pyplot(fig)
 
 # SECTION 4: Raw Data
