@@ -89,7 +89,7 @@ try:
         avg = df_year['Stunting'].mean()
         st.markdown(f"""<div class="metric-card">
             <div class="metric-val">{avg:.1f}%</div>
-            <div class="metric-lbl">Rata-rata Stunting</div>
+            <div class="metric-lbl">Stunting Avarage</div>
         </div>""", unsafe_allow_html=True)
     with col4:
         high = (df_prov['Risiko'] == 'High Risk').sum()

@@ -62,8 +62,8 @@ with col2:
                linestyle='--', label='Rata-rata')
     ax.set_xlabel('ID Komunitas', color='#5a8fa8')
     ax.set_ylabel('Avg Stunting (%)', color='#5a8fa8')
-    ax.set_title('Stunting by Community', color='white', fontsize=10, fontweight='bold')
-    ax.tick_params(colors='white', labelsize=8); ax.spines[:].set_color('#1a3a5c')
+    ax.set_title('Stunting by Community', color='black', fontsize=10, fontweight='bold')
+    ax.tick_params(colors='black', labelsize=8); ax.spines[:].set_color('#1a3a5c')
     ax.legend(facecolor='#0d2137', fontsize=8)
     plt.tight_layout(); st.pyplot(fig)
 
@@ -92,11 +92,11 @@ with col1:
                  facecolor='#0d2137', title='Risk Group',
                  title_fontsize=9)
         ax.set_title('K-Means Cluster Map - Stunting Risk by Province (K=3)',
-                    color='white', fontsize=11, fontweight='bold')
+                    color='black', fontsize=11, fontweight='bold')
         ax.axis('off')
         plt.tight_layout(); st.pyplot(fig)
     except Exception as e:
-        st.warning(f"Peta tidak bisa ditampilkan: {e}")
+        st.warning(f"Peta can't displayed: {e}")
 
 with col2:
     st.markdown("**Cluster Distribution**")
@@ -109,10 +109,10 @@ with col2:
         risk_counts.values, labels=risk_counts.index,
         colors=colors_risk[:len(risk_counts)],
         autopct='%1.0f%%', startangle=90,
-        textprops={'color': 'white', 'fontsize': 9}
+        textprops={'color': 'black', 'fontsize': 9}
     )
     for at in autotexts: at.set_color('white')
-    ax.set_title('Risk Distribution', color='white', fontsize=10, fontweight='bold')
+    ax.set_title('Risk Distribution', color='black', fontsize=10, fontweight='bold')
     plt.tight_layout(); st.pyplot(fig)
 
     # Silhouette score

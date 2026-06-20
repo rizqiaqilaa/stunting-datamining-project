@@ -90,8 +90,8 @@ for idx, (ax, pc, color) in enumerate(zip(axes, ['PC1','PC2'], ['#38a1ff','#38ef
     colors_bar = [color if v >= 0 else '#ef4444' for v in vals]
     ax.barh(features, vals, color=colors_bar, edgecolor='none')
     ax.axvline(0, color='white', lw=0.8, alpha=0.5)
-    ax.set_title(f'Loadings {pc}', color='white', fontsize=11, fontweight='bold')
-    ax.tick_params(colors='white', labelsize=9); ax.spines[:].set_color('#1a3a5c')
+    ax.set_title(f'Loadings {pc}', color='black', fontsize=11, fontweight='bold')
+    ax.tick_params(colors='black', labelsize=9); ax.spines[:].set_color('#1a3a5c')
 plt.tight_layout(); st.pyplot(fig)
 
 # SECTION 4: Regression
@@ -105,8 +105,8 @@ with col1:
     ax.plot([mn, mx], [mn, mx], 'r--', lw=1.5, alpha=0.7, label='Perfect fit')
     ax.set_xlabel('Actual Stunting', color='#5a8fa8')
     ax.set_ylabel('Predicted Stunting', color='#5a8fa8')
-    ax.set_title('Actual vs Predicted', color='white', fontsize=12, fontweight='bold')
-    ax.tick_params(colors='white'); ax.spines[:].set_color('#1a3a5c')
+    ax.set_title('Actual vs Predicted', color='black', fontsize=12, fontweight='bold')
+    ax.tick_params(colors='black'); ax.spines[:].set_color('#1a3a5c')
     ax.legend()
     plt.tight_layout(); st.pyplot(fig)
 
