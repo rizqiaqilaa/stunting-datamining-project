@@ -65,6 +65,8 @@ try:
     df_final = data['df_final']
     df_prov  = data['df_prov']
 
+    st.write(df_final.columns.tolist())
+
     selected_year = st.sidebar.selectbox(
     "Select Year",
     sorted(df_final["Year"].unique()))
