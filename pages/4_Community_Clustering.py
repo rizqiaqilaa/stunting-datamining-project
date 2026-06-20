@@ -62,7 +62,7 @@ with col2:
     ax.set_ylabel('Avg Stunting (%)', color='#5a8fa8')
     ax.set_title('Stunting by Community', color='black', fontsize=10, fontweight='bold')
     ax.tick_params(colors='black', labelsize=8); ax.spines[:].set_color('#1a3a5c')
-    ax.legend(facecolor='#0d2137', fontsize=8)
+    ax.legend(fontsize=8)
     plt.tight_layout(); st.pyplot(fig)
 
     # Modularity info
@@ -86,8 +86,7 @@ with col1:
         gdf_viz['plot_color'] = gdf_viz['Risiko'].map(color_map).fillna('#888888')
         gdf_viz.plot(color=gdf_viz['plot_color'], ax=ax, edgecolor='white', linewidth=0.5)
         patches = [mpatches.Patch(color=v, label=k) for k, v in color_map.items()]
-        ax.legend(handles=patches, loc='lower left', fontsize=9,
-                 facecolor='#0d2137', title='Risk Group',
+        ax.legend(handles=patches, loc='lower left', fontsize=9, title='Risk Group',
                  title_fontsize=9)
         ax.set_title('K-Means Cluster Map - Stunting Risk by Province (K=3)',
                     color='black', fontsize=11, fontweight='bold')
