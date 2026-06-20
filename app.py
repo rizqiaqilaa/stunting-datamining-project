@@ -65,9 +65,10 @@ try:
     df_final = data['df_final']
     df_prov  = data['df_prov']
 
-    selected_year = st.sidebar.selectbox(
-    "Select Year",
-    sorted(df_final["Tahun"].unique()))
+    st.sidebar.markdown("### 📅 Select the Year")
+    selected_year = st.sidebar.radio("",
+            sorted(df_final["Tahun"].unique()),
+            horizontal=True)
 
     df_year = df_final[
         df_final["Tahun"] == selected_year
@@ -130,11 +131,11 @@ try:
         )
         st.plotly_chart(fig2, use_container_width=True)
 
-        st.markdown("## 🔍 Key Insights")
-        st.info(f"""
-            Average stunting prevalence in {selected_year}
-            is {avg:.2f}% across 34 provinces.
-            """)
+    st.markdown("## 🔍 Key Insights")
+    st.info(f"""
+        Average stunting prevalence in {selected_year}
+        is {avg:.2f}% across 34 provinces.
+        """)
 
     st.markdown("---")
     st.markdown("### 📋 About")

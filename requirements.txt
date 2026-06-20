@@ -10,3 +10,4 @@ python-louvain
 libpysal
 mapclassify
 statsmodels
+plotly
