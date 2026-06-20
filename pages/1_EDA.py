@@ -61,7 +61,7 @@ fig, ax = plt.subplots(figsize=(8, 6))
 mask = np.zeros_like(correlation, dtype=bool)
 mask[np.triu_indices_from(mask, k=1)] = True
 sns.heatmap(
-    correlation, annot=True, fmt='.2f', cmap='coolwarm',
+    correlation, annot=True, fmt='.2f', cmap='coolwarm_r',
     center=0, ax=ax, linewidths=0.5, linecolor='#1a3a5c',
     annot_kws={'size': 9, 'color': 'black'},
     cbar_kws={'shrink': 0.8}
