@@ -48,14 +48,14 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-st.markdown('<p class="main-title">🗺️ StuntGraph</p>', unsafe_allow_html=True)
-st.markdown('<p class="main-sub">// Graph-Based Spatio-Temporal Analysis of Stunting in Indonesia</p>', unsafe_allow_html=True)
+st.markdown('<p class="main-title">StuntGraph</p>', unsafe_allow_html=True)
+st.markdown('<p class="main-sub">Graph-Based Spatio-Temporal Analysis of Stunting in Indonesia</p>', unsafe_allow_html=True)
 
 
 # Quick stats
 import pickle, os
 try:
-    with open("datmin_results/dashboard_data.pkl", "rb") as f:
+    with open("datmin_results_new/dashboard_data.pkl", "rb") as f:
         data = pickle.load(f)
 
     df_final = data['df_final']
@@ -88,18 +88,18 @@ try:
     st.markdown("---")
     st.markdown("### 📋 About")
     st.markdown("""
-    This dashboard presents a spatiotemporal analysis of socioeconomic factors affecting the prevalence of stunting 
-    in Indonesia’s 34 provinces from **2021 to 2024** using:
-    
-    | Methods | Functions |
-    |--------|--------|
-    | **PCA** | Dimension reduction & identification of dominant factors |
-    | **Multiple Linear Regression** | Analysis of the influence of socioeconomic factors |
-    | **Spatial Network** | Construction of interprovincial networks |
-    | **Community Detection (Louvain)** | Detection of stunting communities |
-    | **K-Means Clustering** | Risk level classification |
-    """)
+        This dashboard presents a spatio-temporal analysis of socioeconomic factors affecting stunting prevalence
+        across Indonesia's 34 provinces from **2021 to 2024** using the following methods:
+
+        | Methods | Functions |
+        |-----------|-----------|
+        | **PCA** | Dimensionality reduction and identification of dominant factors |
+        | **Multiple Linear Regression** | Analysis of the influence of socioeconomic factors |
+        | **Spatial Network Construction** | Construction of interprovincial networks |
+        | **Community Detection (Louvain)** | Identification of spatial communities |
+        | **K-Means Clustering** | Classification of provinces into low-, medium-, and high-risk groups |
+        """)
 
 except FileNotFoundError:
-    st.error("File `datmin_results/dashboard_data.pkl` not found!")
-    st.info("Make sure the `.pkl` file is in the `datmin_results/` folder")
+    st.error("File `datmin_results_new/dashboard_data.pkl` not found!")
+    st.info("Make sure the `.pkl` file is in the `datmin_results_new/` folder")

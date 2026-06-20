@@ -11,9 +11,6 @@ st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&display=swap');
 * { font-family: 'Sora', sans-serif; }
-[data-testid="stAppViewContainer"] { background: #0a1628; }
-[data-testid="stSidebar"] { background: #061020 !important; border-right: 1px solid #1a3a5c; }
-[data-testid="stSidebar"] * { color: #c8dff0 !important; }
 .section-title {
     font-size: 1.1rem; font-weight: 700; color: #ffc107;
     border-left: 3px solid #ffc107; padding-left: 12px; margin: 2rem 0 1rem 0;
@@ -25,7 +22,7 @@ st.markdown("## 🗺️ Spatial Network Construction")
 
 @st.cache_resource
 def load_data():
-    with open("datmin_results/dashboard_data.pkl", "rb") as f:
+    with open("datmin_results_new/dashboard_data.pkl", "rb") as f:
         return pickle.load(f)
 
 data = load_data()
@@ -48,24 +45,23 @@ stats = [
 ]
 for col, (label, val, color) in zip([col1,col2,col3,col4], stats):
     with col:
-        st.markdown(f"""<div style="background:#0d2137; border:1px solid #1a3a5c; border-radius:12px; padding:1rem; text-align:center;">
+        st.markdown(f"""<div style="background:#f8fafc; border:1px solid #d1d5db; border-radius:12px; padding:1rem; text-align:center;">
         <div style="font-size:1.8rem; font-weight:800; color:{color};">{val}</div>
-        <div style="font-size:0.75rem; color:#5a8fa8; text-transform:uppercase; letter-spacing:1px;">{label}</div>
+        <div style="font-size:0.75rem; color:#64748b; text-transform:uppercase; letter-spacing:1px;">{label}</div>
         </div>""", unsafe_allow_html=True)
 
 # SECTION 2: Adjacency Matrix
 st.markdown('<div class="section-title">🔲 Adjacency Matrix Heatmap</div>', unsafe_allow_html=True)
 
 fig, ax = plt.subplots(figsize=(10, 8))
-fig.patch.set_facecolor('#0d2137'); ax.set_facecolor('#0d2137')
 sns.heatmap(
     adj_matrix, ax=ax,
     cmap=sns.light_palette("#ffc107", as_cmap=True),
     linewidths=0.3, linecolor='#0a1628',
     cbar_kws={'shrink': 0.7}
 )
-ax.set_title('Adjacency Matrix — Spatial Weights', color='white', fontsize=12, fontweight='bold')
-ax.tick_params(colors='white', labelsize=7)
+ax.set_title('Adjacency Matrix — Spatial Weights', color='black', fontsize=12, fontweight='bold')
+ax.tick_params(colors='black', labelsize=7)
 plt.tight_layout(); st.pyplot(fig)
 
 # ── SECTION 3: Degree Centrality
@@ -74,7 +70,6 @@ st.markdown('<div class="section-title">📈 Degree Centrality per Province</div
 df_deg = degree_centrality_df.sort_values('Degree_Centrality', ascending=True)
 
 fig, ax = plt.subplots(figsize=(10, 10))
-fig.patch.set_facecolor('#0d2137'); ax.set_facecolor('#0d2137')
 colors_bar = plt.cm.YlOrRd(np.linspace(0.3, 0.9, len(df_deg)))
 ax.barh(df_deg['Provinsi'], df_deg['Degree_Centrality'], color=colors_bar, edgecolor='none')
 ax.set_title('Degree Centrality - Strategic Hubs of the Province', color='white', fontsize=12, fontweight='bold')
